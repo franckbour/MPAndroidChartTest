@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MPAndroidChartTest</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="hello_linechart_fragment">Hello LineChart fragment</string>
+    <string name="hello_main_fragment">Hello Main fragment</string>
+    <string name="hello_barchart_fragment">Hello BarChart fragment</string>
+
+</resources>

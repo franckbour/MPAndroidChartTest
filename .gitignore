@@ -32,8 +32,12 @@ proguard/
 # Android Studio captures folder
 captures/
 
+# Android Studio 3.0
+output.json
+
 # Intellij
 *.iml
+.idea/
 
 # Keystore files
 *.jks
