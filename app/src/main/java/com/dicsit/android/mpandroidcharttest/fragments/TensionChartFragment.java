@@ -50,14 +50,14 @@ public class TensionChartFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        RelativeLayout layout = myView.findViewById(R.id.barchart_container);
+        RelativeLayout layout = myView.findViewById(R.id.chart_container);
         mChart = new LineChart(getContext());
         showChartInLayout(layout);
     }

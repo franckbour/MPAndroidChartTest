@@ -33,7 +33,7 @@ public class LineChartBuilderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_line_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
@@ -44,10 +44,13 @@ public class LineChartBuilderFragment extends BaseFragment {
         ArrayList<Constante> constantes = Constante.getJeux(10, 50f, -20f);
         //ArrayList<Entry> list = FBChart.convertAsEntry(constantes, Entry.class);
 
-        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.linechart_container)
-                .setChartType(FBChart.Type.LINE)
+        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.chart_container)
+                .setChartType(FBChart.Type.Line)
+                .setMaxLimit(true, 25f)
+                .setMinLimit(true, -15f)
+                .setNormalLimit(true, 10f)
                 //.setEntries(getEntryValues(10, 60f, 5f))
-                //.setEntries(list)
+                 //.setEntries(list)
                 .setEntries(constantes)
                 .setMarkerView(R.layout.custom_marker_view)
                 .build();

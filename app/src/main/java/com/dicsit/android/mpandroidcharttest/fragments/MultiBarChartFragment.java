@@ -50,14 +50,14 @@ public class MultiBarChartFragment extends BaseFragment implements OnChartValueS
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        RelativeLayout layout = myView.findViewById(R.id.barchart_container);
+        RelativeLayout layout = myView.findViewById(R.id.chart_container);
         mChart = new BarChart(getContext());
         showChartInLayout(layout);
     }

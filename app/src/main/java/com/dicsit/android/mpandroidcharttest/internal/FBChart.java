@@ -123,8 +123,8 @@ public class FBChart {
      * Type de graphique
      */
     public enum Type {
-        LINE,
-        BAR,
+        Line,
+        Bar,
         Tension,
         UNKNOWN
     }
@@ -365,7 +365,7 @@ public class FBChart {
     }
 
     /**
-     * Insertion des données dans le graphique de type LINE
+     * Insertion des données dans le graphique de type Line
      * @param lists listes des données
      */
     @SuppressWarnings("unchecked")
@@ -388,7 +388,7 @@ public class FBChart {
     }
 
     /**
-     * Insertion des données dans le graphique de type BAR
+     * Insertion des données dans le graphique de type Bar
      * @param lists listes des données
      */
     @SuppressWarnings("unchecked")
@@ -1165,12 +1165,12 @@ public class FBChart {
          */
         private void setClassesByType(Type type) {
             switch (type) {
-                case LINE:
+                case Line:
                 case Tension:
                     this.clazz = LineChart.class;
                     this.entryClazz = Entry.class;
                     break;
-                case BAR:
+                case Bar:
                     this.clazz = BarChart.class;
                     this.entryClazz = BarEntry.class;
                     break;

@@ -29,7 +29,7 @@ public class TensionChartBuilderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
@@ -37,7 +37,7 @@ public class TensionChartBuilderFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ArrayList<Constante> constantes = Constante.getTensionJeux(10, 60f, 30f, 30f, 0f);
-        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.barchart_container)
+        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.chart_container)
                 .setChartType(FBChart.Type.Tension)
                 .setMaxLimit(true, 60f, "Normale haute")
                 .setMinLimit(true, 10f, "Normale basse")

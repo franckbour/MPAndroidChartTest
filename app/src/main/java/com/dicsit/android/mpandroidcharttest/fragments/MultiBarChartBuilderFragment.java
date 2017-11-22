@@ -32,7 +32,7 @@ public class MultiBarChartBuilderFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
@@ -41,8 +41,8 @@ public class MultiBarChartBuilderFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         ArrayList<Constante> constantes1 = Constante.getJeux(10, 60f, 0f);
         ArrayList<Constante> constantes2 = Constante.getJeux(10, 30f, -10f);
-        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.barchart_container)
-                .setChartType(FBChart.Type.BAR)
+        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.chart_container)
+                .setChartType(FBChart.Type.Bar)
                 .setMaxLimit(true, 60f)
                 .setMinLimit(true, 10f)
                 .setNormalLimit(true, 15f)

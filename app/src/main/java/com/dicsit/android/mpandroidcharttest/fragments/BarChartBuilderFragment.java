@@ -34,7 +34,7 @@ public class BarChartBuilderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_chart, container, false);
         return myView;
     }
 
@@ -42,13 +42,13 @@ public class BarChartBuilderFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ArrayList<Constante> constantes = Constante.getJeux(10, 60f, 5f);
-        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.barchart_container)
-                .setChartType(FBChart.Type.BAR)
+        FBChart chart = new FBChart.Builder(getContext(), myView, R.id.chart_container)
+                .setChartType(FBChart.Type.Bar)
                 //.setLeftAxisMaximum(70f)
                 //.setLeftAxisMinimum(0f)
-                //.setMaxLimit(true, 60f)
-                //.setMinLimit(true, 10f)
-                //.setNormalLimit(true, 15f)
+                .setMaxLimit(true, 55f)
+                .setMinLimit(true, 10f)
+                .setNormalLimit(true, 25f)
                 //.setTextSize(10f)
                 //.setValueTextSize(12f)
                 //.setLimitLineWidth(4f)
