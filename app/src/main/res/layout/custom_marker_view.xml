@@ -35,11 +35,12 @@
         android:id="@+id/tvComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="150dp"
         android:text=""
         android:textSize="12sp"
         android:textColor="@android:color/white"
         android:ellipsize="end"
-        android:singleLine="true"
+        android:maxLines="5"
         android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 </LinearLayout>

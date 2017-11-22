@@ -2,9 +2,8 @@ package com.dicsit.android.mpandroidcharttest.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,59 +11,56 @@ import android.widget.RelativeLayout;
 
 import com.dicsit.android.mpandroidcharttest.R;
 import com.dicsit.android.mpandroidcharttest.internal.MyMarkerView;
-import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.LineChart;;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IFillFormatter;
+import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link LineChartFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link LineChartFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by BourF on 20/11/2017.
  */
-public class LineChartFragment extends BaseFragment {
 
-    View myView;
-    LineChart mChart;
+public class TensionChartFragment extends BaseFragment {
+
+    protected View myView;
+    protected LineChart mChart;
 
     final int mDefaultColor = ColorTemplate.getHoloBlue();
+    private int mFillColor = Color.argb(150, 51, 181, 229);
 
-    public LineChartFragment() {
-        // Required empty public constructor
+    public TensionChartFragment() {
     }
 
-    @NonNull
-    public static LineChartFragment newInstance() {
-        return new LineChartFragment();
+    public static TensionChartFragment newInstance() {
+        return new TensionChartFragment();
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        myView = inflater.inflate(R.layout.fragment_line_chart, container, false);
+        myView = inflater.inflate(R.layout.fragment_bar_chart, container, false);
         return myView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        RelativeLayout layout = myView.findViewById(R.id.linechart_container);
+        RelativeLayout layout = myView.findViewById(R.id.barchart_container);
         mChart = new LineChart(getContext());
         showChartInLayout(layout);
     }
-
 
     private void showChartInLayout(RelativeLayout layout) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -81,7 +77,10 @@ public class LineChartFragment extends BaseFragment {
         //mChart.setViewPortOffsets(0f, 0f, 0f, 0f); // ??
 
         // Couleur de fond
-        mChart.setBackgroundColor(Color.TRANSPARENT);
+        mChart.setGridBackgroundColor(Color.TRANSPARENT);
+        //mChart.setGridBackgroundColor(mDefaultColor);
+        //mChart.setGridBackgroundColor(mFillColor);
+        mChart.setDrawGridBackground(true);
 
         // Activation de l'interactivité
         mChart.setTouchEnabled(true); // true par défaut
@@ -171,22 +170,25 @@ public class LineChartFragment extends BaseFragment {
         leftAxis.enableGridDashedLine(10f, 5f, 0f);
         //leftAxis.setDrawGridLines(false);
         //leftAxis.setGranularityEnabled(true);
-        leftAxis.setAxisMinimum(-30f);
-        leftAxis.setAxisMaximum(60f);
+        //leftAxis.setAxisMinimum(-30f);
+        //leftAxis.setAxisMaximum(60f);
         //leftAxis.setYOffset(-9f);
         //leftAxis.setTextColor(Color.rgb(255, 192, 56));
 
         // Affiche ou non ligne du 0
-        leftAxis.setDrawZeroLine(false);
+        //leftAxis.setDrawZeroLine(false);
+        //leftAxis.setDrawGridLines(false);
+        //leftAxis.setDrawAxisLine(true);
+
         //leftAxis.setZeroLineColor(Color.RED);
         //leftAxis.setZeroLineWidth(2f);
 
-        leftAxis.addLimitLine(upLimit);
-        leftAxis.addLimitLine(downLimit);
-        leftAxis.addLimitLine(normalLimit);
+        //leftAxis.addLimitLine(upLimit);
+        //leftAxis.addLimitLine(downLimit);
+        //leftAxis.addLimitLine(normalLimit);
 
         // limit lines are drawn behind data (and not on top)
-        leftAxis.setDrawLimitLinesBehindData(true);
+        //leftAxis.setDrawLimitLinesBehindData(true);
 
         // Axe Y (droit)
         mChart.getAxisRight().setEnabled(false);
@@ -201,62 +203,102 @@ public class LineChartFragment extends BaseFragment {
     }
 
     private void setData(int count, float range) {
-        // now in hours
-        long now = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis());
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
-        ArrayList<Entry> values = new ArrayList<>();
-
-        float from = now;
-
-        // count = hours
-        float to = from + count ;
-
-        // increment by 1 hour
-        for (float x = from; x < to; x++) {
-
-            float y = getRandom(range, -20);
-            values.add(new Entry(x, y)); // add one entry per hour
+        for (int i = 0; i < count; i++) {
+            float val = (float) (Math.random() * range) + 50;// + (float)
+            // ((mult *
+            // 0.1) / 10);
+            yVals1.add(new Entry(i, val));
         }
 
-        // create a dataset and give it a type
-        LineDataSet set1 = new LineDataSet(values, "DataSet 1");
+        ArrayList<Entry> yVals2 = new ArrayList<Entry>();
+
+        for (int i = 0; i < count; i++) {
+            float val = (float) (Math.random() * range) + 150; // + (float)
+            // ((mult *
+            // 0.1) / 10);
+            yVals2.add(new Entry(i, val));
+        }
+
+        LineDataSet set1, set2;
+
+        set1 = new LineDataSet(yVals1, "DataSet 1");
+
+        set1.setDrawValues(true);
+        set1.setValueTextColor(mDefaultColor);
+        set1.setValueTextSize(12f);
+
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-        // Lignes
         set1.setColor(mDefaultColor);
+        set1.setDrawCircles(true);
         set1.setLineWidth(3f);
-
-        // Cercles
-        set1.setDrawCircles(true); // true par défaut
         set1.setCircleRadius(5f);
         set1.setDrawCircleHole(true);
         set1.setCircleHoleRadius(2.5f);
 
-        // Valeurs (par défaut)
-        set1.setDrawValues(true); // true par défaut
-        set1.setValueTextColor(mDefaultColor);
-        set1.setValueTextSize(12f);
+        //set1.setDrawFilled(true);
+        //set1.setFillAlpha(255);
+        //set1.setFillColor(getBackgroundColor());
 
-        // Remplissage
-        set1.setDrawFilled(true); // false par défaut
-        set1.setFillAlpha(50);
-        set1.setFillColor(mDefaultColor);
+        set1.setHighLightColor(Color.rgb(244, 117, 117));
+        set1.setFillFormatter(new IFillFormatter() {
+            @Override
+            public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                return mChart.getAxisLeft().getAxisMinimum();
+            }
+        });
 
-        // Highlights
-        set1.setDrawHighlightIndicators(true); // par défaut -> true
-        set1.setHighLightColor(mDefaultColor);
-        //set1.setHighlightLineWidth(2f);
+        // create a dataset and give it a type
+        set2 = new LineDataSet(yVals2, "DataSet 2");
+
+        set2.setDrawValues(true);
+        set2.setValueTextColor(mDefaultColor);
+        set2.setValueTextSize(12f);
+
+        set2.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set2.setColor(mDefaultColor);
+        set2.setDrawCircles(true);
+        set2.setLineWidth(3f);
+        set2.setCircleRadius(5f);
+        set2.setDrawCircleHole(true);
+        set2.setCircleHoleRadius(2.5f);
+
+        //set2.setDrawFilled(true);
+        //set2.setFillAlpha(255);
+        //set2.setFillColor(getBackgroundColor());
+
+        set2.setHighLightColor(Color.rgb(244, 117, 117));
+        set2.setFillFormatter(new IFillFormatter() {
+            @Override
+            public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                return mChart.getAxisLeft().getAxisMaximum();
+            }
+        });
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(set1); // add the datasets
+        dataSets.add(set2);
 
         // create a data object with the datasets
-        LineData data = new LineData(set1);
-        //// Valeurs (surchargée, à afficher)
-        //data.setValueTextColor(Color.RED);
-        //data.setValueTextSize(9f);
+        LineData data = new LineData(dataSets);
+        //data.setDrawValues(false);
 
         // set data
         mChart.setData(data);
 
-        // LineDataSet  -> Ligne(s) de graphique à afficher
-        // LineData     -> TOUTES (LineDataSet[]) les données à afficher
+    }
+
+    private int getBackgroundColor() {
+        return getThemeColor(android.R.attr.windowBackground);
+    }
+
+    private int getThemeColor(int resId) {
+        TypedValue a = new TypedValue();
+        getContext().getTheme().resolveAttribute(resId, a ,true);
+        if (a.type >= TypedValue.TYPE_FIRST_COLOR_INT && a.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+            return a.data;
+        }
+        return -1;
     }
 }

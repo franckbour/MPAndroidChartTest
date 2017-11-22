@@ -5,9 +5,16 @@
     tools:context="com.dicsit.android.mpandroidcharttest.fragments.BarChartFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_barchart_fragment" />
+        android:text="@string/hello_barchart_fragment" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:windowBackground"
+        android:padding="5dp"
+        android:id="@+id/barchart_container" />
 
 </FrameLayout>

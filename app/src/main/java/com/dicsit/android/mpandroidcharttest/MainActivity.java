@@ -2,11 +2,8 @@ package com.dicsit.android.mpandroidcharttest;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,10 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dicsit.android.mpandroidcharttest.fragments.BarChartBuilderFragment;
 import com.dicsit.android.mpandroidcharttest.fragments.BarChartFragment;
 import com.dicsit.android.mpandroidcharttest.fragments.BaseFragment;
+import com.dicsit.android.mpandroidcharttest.fragments.TensionChartBuilderFragment;
+import com.dicsit.android.mpandroidcharttest.fragments.TensionChartFragment;
+import com.dicsit.android.mpandroidcharttest.fragments.LineChartBuilderFragment;
 import com.dicsit.android.mpandroidcharttest.fragments.LineChartFragment;
-import com.dicsit.android.mpandroidcharttest.fragments.MainFragment;
+import com.dicsit.android.mpandroidcharttest.fragments.MultiBarChartBuilderFragment;
+import com.dicsit.android.mpandroidcharttest.fragments.MultiBarChartFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -98,13 +100,21 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
             fragment = LineChartFragment.newInstance();
+        } else if (id == R.id.nav_camera_2) {
+            fragment = LineChartBuilderFragment.newInstance();
         } else if (id == R.id.nav_gallery) {
             fragment = BarChartFragment.newInstance();
-        } /*else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_gallery_2) {
+            fragment = BarChartBuilderFragment.newInstance();
+        } else if (id == R.id.nav_slideshow) {
+            fragment = MultiBarChartFragment.newInstance();
+        } else if (id == R.id.nav_slideshow_2) {
+            fragment = MultiBarChartBuilderFragment.newInstance();
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+            fragment = TensionChartFragment.newInstance();
+        }  else if (id == R.id.nav_manage_2) {
+            fragment = TensionChartBuilderFragment.newInstance();
+        }/* else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 

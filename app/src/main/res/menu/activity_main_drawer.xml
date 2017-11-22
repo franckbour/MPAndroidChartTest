@@ -8,21 +8,42 @@
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
             android:title="LineChart" />
+
+        <item
+            android:id="@+id/nav_camera_2"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="LineChart (Builder)" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="BarChart" />
 
-        <!--
+        <item
+            android:id="@+id/nav_gallery_2"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="BarChart (Builder)" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="MultiBarChart" />
+
+        <item
+            android:id="@+id/nav_slideshow_2"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="MultiBarChart (Builder)" />
+
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-            -->
+            android:title="Tension Chart" />
+
+        <item
+            android:id="@+id/nav_manage_2"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tension Chart (Builder)" />
+
     </group>
 
     <!--

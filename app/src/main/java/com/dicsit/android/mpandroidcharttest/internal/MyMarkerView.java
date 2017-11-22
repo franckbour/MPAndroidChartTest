@@ -47,20 +47,20 @@ public class MyMarkerView extends MarkerView {
         } else {
             tvValue.setText("" + Utils.formatNumber(e.getY(), 1, true));
             tvDate.setText(formatDateValue(e.getX()));
-            tvComment.setText("Commentaire");
+            tvComment.setText("Commentaire sur 5 lignes max");
         }
 
         super.refreshContent(e, highlight);
     }
 
     private String formatDateValue(float value) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("'Le' dd/MM/yyyy 'à' HH:mm");
         long millis = TimeUnit.HOURS.toMillis((long) value);
         return format.format(new Date(millis));
     }
 
     @Override
     public MPPointF getOffset() {
-        return new MPPointF(-(getWidth() / 2 ), -getHeight());
+        return new MPPointF(-(getWidth() / 2 ), -(getHeight() + 75f));
     }
 }
