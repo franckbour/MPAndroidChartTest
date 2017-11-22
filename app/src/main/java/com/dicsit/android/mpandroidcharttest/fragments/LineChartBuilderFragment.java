@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.dicsit.android.mpandroidcharttest.R;
 import com.dicsit.android.mpandroidcharttest.internal.FBChart;
+import com.dicsit.android.mpandroidcharttest.test.Constante;
+
+import java.util.ArrayList;
 
 /**
  * Created by BourF on 21/11/2017.
@@ -37,18 +40,15 @@ public class LineChartBuilderFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ArrayList<Constante> constantes = Constante.getJeux(10, 50f, -20f);
+        //ArrayList<Entry> list = FBChart.convertAsEntry(constantes, Entry.class);
+
         FBChart chart = new FBChart.Builder(getContext(), myView, R.id.linechart_container)
-                .setType(FBChart.Type.LINE)
-                .setLeftAxisMaximum(70f)
-                .setLeftAxisMinimum(0f)
-                .setMaxLimit(true, 60f)
-                .setMinLimit(true, 10f)
-                .setNormalLimit(true, 15f)
-                .setTextSize(10f)
-                .setValueTextSize(12f)
-                .setLimitLineWidth(4f)
-                .setLineWidth(3f)
-                .setEntries(getEntryValues(10, 60f, 5f))
+                .setChartType(FBChart.Type.LINE)
+                //.setEntries(getEntryValues(10, 60f, 5f))
+                //.setEntries(list)
+                .setEntries(constantes)
                 .setMarkerView(R.layout.custom_marker_view)
                 .build();
         chart.show();

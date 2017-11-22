@@ -77,10 +77,11 @@ public class TensionChartFragment extends BaseFragment {
         //mChart.setViewPortOffsets(0f, 0f, 0f, 0f); // ??
 
         // Couleur de fond
-        mChart.setGridBackgroundColor(Color.TRANSPARENT);
-        //mChart.setGridBackgroundColor(mDefaultColor);
+        //mChart.setGridBackgroundColor(Color.TRANSPARENT);
+        mChart.setGridBackgroundColor(mDefaultColor);
         //mChart.setGridBackgroundColor(mFillColor);
         mChart.setDrawGridBackground(true);
+        //mChart.setDrawBorders(true);
 
         // Activation de l'interactivité
         mChart.setTouchEnabled(true); // true par défaut
@@ -107,14 +108,14 @@ public class TensionChartFragment extends BaseFragment {
         mChart.setMarker(markerView);
 
         // Définitions des limites
-        LimitLine upLimit = new LimitLine(50f, "Max");
+        LimitLine upLimit = new LimitLine(190f, "Max");
         upLimit.setLineWidth(4f);
         upLimit.enableDashedLine(10f, 10f, 0f);
         upLimit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
         upLimit.setTextSize(10f);
         upLimit.setTextColor(upLimit.getLineColor());
 
-        LimitLine downLimit = new LimitLine(-20f, "Min");
+        LimitLine downLimit = new LimitLine(80f, "Min");
         downLimit.setLineWidth(4f);
         downLimit.enableDashedLine(10f, 10f, 0f);
         downLimit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
@@ -183,8 +184,8 @@ public class TensionChartFragment extends BaseFragment {
         //leftAxis.setZeroLineColor(Color.RED);
         //leftAxis.setZeroLineWidth(2f);
 
-        //leftAxis.addLimitLine(upLimit);
-        //leftAxis.addLimitLine(downLimit);
+        leftAxis.addLimitLine(upLimit);
+        leftAxis.addLimitLine(downLimit);
         //leftAxis.addLimitLine(normalLimit);
 
         // limit lines are drawn behind data (and not on top)
@@ -237,9 +238,9 @@ public class TensionChartFragment extends BaseFragment {
         set1.setDrawCircleHole(true);
         set1.setCircleHoleRadius(2.5f);
 
-        //set1.setDrawFilled(true);
-        //set1.setFillAlpha(255);
-        //set1.setFillColor(getBackgroundColor());
+        set1.setDrawFilled(true);
+        set1.setFillAlpha(255);
+        set1.setFillColor(getBackgroundColor());
 
         set1.setHighLightColor(Color.rgb(244, 117, 117));
         set1.setFillFormatter(new IFillFormatter() {
@@ -264,9 +265,9 @@ public class TensionChartFragment extends BaseFragment {
         set2.setDrawCircleHole(true);
         set2.setCircleHoleRadius(2.5f);
 
-        //set2.setDrawFilled(true);
-        //set2.setFillAlpha(255);
-        //set2.setFillColor(getBackgroundColor());
+        set2.setDrawFilled(true);
+        set2.setFillAlpha(255);
+        set2.setFillColor(getBackgroundColor());
 
         set2.setHighLightColor(Color.rgb(244, 117, 117));
         set2.setFillFormatter(new IFillFormatter() {

@@ -240,7 +240,7 @@ public class BarChartFragment extends BaseFragment {
         set1.setValueTextSize(12f);
 
         // Remplissage
-        //set1.setDrawFilled(true); // false par défaut
+        //set1.setDrawFilledEnable(true); // false par défaut
         //set1.setFillAlpha(50);
         //set1.setFillColor(mDefaultColor);
 

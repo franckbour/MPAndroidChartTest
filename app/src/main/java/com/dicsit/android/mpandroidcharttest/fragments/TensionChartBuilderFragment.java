@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.dicsit.android.mpandroidcharttest.R;
 import com.dicsit.android.mpandroidcharttest.internal.FBChart;
+import com.dicsit.android.mpandroidcharttest.test.Constante;
+
+import java.util.ArrayList;
 
 /**
  * Created by BourF on 21/11/2017.
@@ -33,19 +36,15 @@ public class TensionChartBuilderFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        ArrayList<Constante> constantes = Constante.getTensionJeux(10, 60f, 30f, 30f, 0f);
         FBChart chart = new FBChart.Builder(getContext(), myView, R.id.barchart_container)
-                .setType(FBChart.Type.TA)
-                .setLeftAxisMaximum(70f)
-                .setLeftAxisMinimum(0f)
-                .setMaxLimit(true, 60f)
-                .setMinLimit(true, 10f)
-                .setNormalLimit(true, 15f)
-                .setTextSize(10f)
-                .setValueTextSize(12f)
-                .setLimitLineWidth(4f)
-                .setLineWidth(3f)
-                .setEntries(getEntryValues(10, 60f, 0f), getEntryValues(10, 60f, 0f))
+                .setChartType(FBChart.Type.Tension)
+                .setMaxLimit(true, 60f, "Normale haute")
+                .setMinLimit(true, 10f, "Normale basse")
+                .setCircleRadius(7f)
+                //.setTensionEntries(getEntryValues(10, 60f, 30f), getEntryValues(10, 30f, 0f))
+                //.setTensionsEntries(FBChart.convertAsTensionEntries(constantes))
+                .setTensionEntries(constantes)
                 .setMarkerView(R.layout.custom_marker_view)
                 .build();
         chart.show();

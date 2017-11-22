@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.dicsit.android.mpandroidcharttest.R;
 import com.dicsit.android.mpandroidcharttest.internal.FBChart;
+import com.dicsit.android.mpandroidcharttest.test.Constante;
+
+import java.util.ArrayList;
 
 /**
  * Created by BourF on 21/11/2017.
@@ -36,18 +39,19 @@ public class MultiBarChartBuilderFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ArrayList<Constante> constantes1 = Constante.getJeux(10, 60f, 0f);
+        ArrayList<Constante> constantes2 = Constante.getJeux(10, 30f, -10f);
         FBChart chart = new FBChart.Builder(getContext(), myView, R.id.barchart_container)
-                .setType(FBChart.Type.BAR)
-                //.setLeftAxisMaximum(70f)
-                //.setLeftAxisMinimum(-20f)
+                .setChartType(FBChart.Type.BAR)
                 .setMaxLimit(true, 60f)
                 .setMinLimit(true, 10f)
                 .setNormalLimit(true, 15f)
-                .setTextSize(10f)
-                .setValueTextSize(12f)
-                .setLimitLineWidth(4f)
+                //.setTextSize(10f)
+                //.setValueTextSize(12f)
+                //.setLimitLineWidth(4f)
                 .setBarWidth(0.4f)
-                .setEntries(getBarEntryValues(10, 60f, 0f), getBarEntryValues(10, 30f, -10f))
+                //.setEntries(getBarEntryValues(10, 60f, 0f), getBarEntryValues(10, 30f, -10f))
+                .setEntries(constantes1, constantes2)
                 .setMarkerView(R.layout.custom_marker_view)
                 .setAnimationEnable(true)
                 .build();
