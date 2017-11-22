@@ -131,7 +131,7 @@ public class FBChart {
 
     /**
      * Constructeur
-     * @param builder Dicsit chart builder
+     * @param builder FB chart builder
      */
     private FBChart(Builder builder) {
         this.mContext = builder.context;
@@ -631,7 +631,7 @@ public class FBChart {
     }
 
     /**
-     * Custom Marker view
+     * FB Custom Marker view
      */
     private class FBMarkerView extends MarkerView {
 
@@ -781,7 +781,7 @@ public class FBChart {
     }
 
     /**
-     * Dicsit Chart Builder
+     * FB Chart Builder
      */
     public static class Builder {
         private final Context context;
