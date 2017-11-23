@@ -45,7 +45,7 @@ public class TensionChartBuilderFragment extends BaseFragment {
                 //.setTensionEntries(getEntryValues(10, 60f, 30f), getEntryValues(10, 30f, 0f))
                 //.setTensionsEntries(FBChart.convertAsTensionEntries(constantes))
                 .setTensionEntries(constantes)
-                .setMarkerView(R.layout.custom_marker_view)
+                .showMarkers(true)
                 .build();
         chart.show();
     }

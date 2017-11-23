@@ -77,7 +77,6 @@ public class FBChart {
     private View mParent;
 
     private int resId;
-    private int markerViewResId;
     private int mValueTextColor;
 
     private boolean mXAxisDateFormatEnable;
@@ -88,6 +87,7 @@ public class FBChart {
     private boolean mMinLimitEnable;
     private boolean mNormalLimitEnable;
     private boolean mDrawFilledEnable;
+    private boolean mShowMarkerEnable;
 
     private float mMaxLimitValue;
     private float mMinLimitValue;
@@ -111,6 +111,7 @@ public class FBChart {
 
     private static final int mDefaultColor = ColorTemplate.getHoloBlue();
     private static final float mLeftAxisMinMaxOffset = 5f;
+    private static final int mMarkerViewLayout = R.layout.custom_marker_view;
 
     private DataMinMax minMaxData;
     private DataMinMax getMinMaxData() {
@@ -158,8 +159,7 @@ public class FBChart {
         this.mMaxLimitLabel = builder.maxLimitLabel;
         this.mMinLimitLabel = builder.minLimitLabel;
         this.mNormalLimitLabel = builder.normalLimitLabel;
-
-        this.markerViewResId = builder.markerViewResId;
+        this.mShowMarkerEnable = builder.showMarkerEnable;
 
         this.mLeftAxisMaximum = builder.customLeftAxisMaxValue ? builder.leftAxisMaximum : getDefaultLeftAxisMaxValue();
         this.mLeftAxisMinimum = builder.customLeftAxisMinValue ? builder.leftAxisMinimum : getDefaultLeftAxisMinValue();
@@ -240,8 +240,8 @@ public class FBChart {
         //mChart.setHighlightPerTapEnabled(true); // true par défaut
         //mChart.setMaxHighlightDistance(500f); // 500dp par défaut
 
-        if (markerViewResId != -1) {
-            FBMarkerView markerView = new FBMarkerView(mContext, markerViewResId);
+        if (mShowMarkerEnable) {
+            FBMarkerView markerView = new FBMarkerView(mContext);
             markerView.setChartView(mChart);
             mChart.setMarker(markerView);
         }
@@ -652,6 +652,15 @@ public class FBChart {
             tvComment = findViewById(R.id.tvComment);
         }
 
+        /**
+         * Constructor. Sets up the MarkerView with a custom layout resource.
+         *
+         * @param context context
+         */
+        public FBMarkerView(Context context) {
+            this(context, mMarkerViewLayout);
+        }
+
         @Override
         public void refreshContent(Entry e, Highlight highlight) {
 
@@ -797,7 +806,7 @@ public class FBChart {
         private View parent;
         private int resId;
 
-        private int markerViewResId = -1;
+        //private int markerViewResId = -1;
         private int valueTextColor;
 
         private boolean xAxisDateFormatEnable = true;
@@ -806,6 +815,7 @@ public class FBChart {
         private boolean minLimitEnable = false;
         private boolean normalLimitEnable = false;
         private boolean drawFilledEnable = false;
+        private boolean showMarkerEnable = false;
 
         private boolean customLeftAxisMinValue = false;
         private boolean customLeftAxisMaxValue = false;
@@ -1032,9 +1042,20 @@ public class FBChart {
          * Définition de la vue des marqueurs
          * @param resId id de la ressource
          * @return builder
+         * @deprecated use showMarker(boolean) instead
          */
+        @Deprecated
         public Builder setMarkerView(@LayoutRes int resId) {
-            this.markerViewResId = resId;
+            return showMarkers(true);
+        }
+
+        /**
+         * Affichage des marqueurs
+         * @param enable active/désactive
+         * @return builders
+         */
+        public Builder showMarkers(boolean enable) {
+            this.showMarkerEnable = enable;
             return this;
         }
 

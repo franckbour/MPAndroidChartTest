@@ -54,7 +54,7 @@ public class BarChartBuilderFragment extends BaseFragment {
                 //.setLimitLineWidth(4f)
                 //.setEntries(getBarEntryValues(10, 60f, 5f))
                 .setEntries(constantes)
-                .setMarkerView(R.layout.custom_marker_view)
+                .showMarkers(true)
                 .build();
         chart.show();
     }

@@ -52,7 +52,7 @@ public class LineChartBuilderFragment extends BaseFragment {
                 //.setEntries(getEntryValues(10, 60f, 5f))
                  //.setEntries(list)
                 .setEntries(constantes)
-                .setMarkerView(R.layout.custom_marker_view)
+                .showMarkers(true)
                 .build();
         chart.show();
     }

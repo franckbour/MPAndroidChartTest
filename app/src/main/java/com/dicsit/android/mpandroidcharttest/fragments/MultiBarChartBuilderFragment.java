@@ -52,7 +52,7 @@ public class MultiBarChartBuilderFragment extends BaseFragment {
                 .setBarWidth(0.4f)
                 //.setEntries(getBarEntryValues(10, 60f, 0f), getBarEntryValues(10, 30f, -10f))
                 .setEntries(constantes1, constantes2)
-                .setMarkerView(R.layout.custom_marker_view)
+                .showMarkers(true)
                 .setAnimationEnable(true)
                 .build();
         chart.show();
